@@ -1,27 +1,37 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { data } from './content/data';
-import Modal from './modal/Modal';
-import Header from './components/Header'
+import Header from './components/Header';
+import Card from './components/Card';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
 
+  const openCard = (content) => {
+    setSelectedContent(content);
+    setShowModal(true);
+  };
+
+  const closeCard = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
-      {showModal&&<Modal setShowModal={setShowModal} setSelectedContent={setSelectedContent} content={selectedContent} data={data}/>}
+      {showModal && <Card content={selectedContent} onClose={closeCard} />} 
       <div style={styles.main}>
-        <Header title="Photo Gallery" subtitle="A Photo Gallery App " />
+        <Header title="Photo Gallery" subtitle="A Photo Gallery App" />
         <div style={styles.container}>
           {data.map((image_data, index) => {
             return (
-              <div style={styles.imageContainer}
+              <div
+                style={styles.imageContainer}
                 onClick={() => {
-                  setShowModal(true);
-                  setSelectedContent(image_data);
+                  openCard(image_data);
                 }}
+                key={index}
               >
-                <img style={styles.image} src={image_data.url} />
+                <img style={styles.image} src={image_data.url} alt={image_data.name} />
                 <div style={styles.imageDescription}>
                   <p style={styles.imageDescriptionText}>{image_data.name}</p>
                 </div>
@@ -42,13 +52,13 @@ const styles = {
     width: '100%',
     height: '100%',
     backgroundColor: '#f0f0f0',
-    flexDirection: "column"
+    flexDirection: 'column',
   },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
     gap: 10,
-    maxWidth: "60vw"
+    maxWidth: '60vw',
   },
   imageContainer: {
     display: 'flex',
@@ -71,13 +81,12 @@ const styles = {
     width: '100%',
     height: '50px',
     backgroundColor: '#000000',
-    opacity: '0.5',
   },
   imageDescriptionText: {
     color: '#ffffff',
     fontSize: '16px',
     fontWeight: 'bold',
   },
-}
+};
 
 export default App;
