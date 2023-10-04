@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { data } from './content/data';
-import Modal from './modal/Modal';
-import Header from './components/Header'
+import { useState } from "react";
+import { data } from "./content/data";
+import Modal from "./modal/Modal";
+import Header from "./components/Header";
+import "./App.css";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -9,13 +10,22 @@ function App() {
 
   return (
     <>
-      {showModal&&<Modal setShowModal={setShowModal} setSelectedContent={setSelectedContent} content={selectedContent} data={data}/>}
+      {showModal && (
+        <Modal
+          setShowModal={setShowModal}
+          setSelectedContent={setSelectedContent}
+          content={selectedContent}
+          data={data}
+        />
+      )}
       <div style={styles.main}>
         <Header title="Photo Gallery" subtitle="A Photo Gallery App " />
-        <div style={styles.container}>
+        <div className="container" style={styles.container}>
           {data.map((image_data, index) => {
             return (
-              <div style={styles.imageContainer}
+              <div
+                className="imageContainer"
+                style={styles.imageContainer}
                 onClick={() => {
                   setShowModal(true);
                   setSelectedContent(image_data);
@@ -36,48 +46,44 @@ function App() {
 
 const styles = {
   main: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#f0f0f0',
-    flexDirection: "column"
-  },
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 10,
-    maxWidth: "60vw"
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    margin: "auto",
+    backgroundColor: "#f0f0f0",
+    flexDirection: "column",
   },
   imageContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center',
-    cursor: 'pointer',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    cursor: "pointer",
+    // margin: "auto",
   },
   image: {
-    width: '300px',
-    height: '300px',
-    objectFit: 'cover',
+    width: "300px",
+    height: "300px",
+    objectFit: "cover",
   },
   imageDescription: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center',
-    width: '100%',
-    height: '50px',
-    backgroundColor: '#000000',
-    opacity: '0.5',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    width: "100%",
+    height: "50px",
+    backgroundColor: "#000000",
+    opacity: "0.5",
   },
   imageDescriptionText: {
-    color: '#ffffff',
-    fontSize: '16px',
-    fontWeight: 'bold',
+    color: "#ffffff",
+    fontSize: "16px",
+    fontWeight: "bold",
   },
-}
+};
 
 export default App;
