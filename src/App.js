@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { data } from './content/data';
 import Header from './components/Header';
 import Card from './components/Card';
+import Modal from "./modal/Modal";
+import "./App.css";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -19,12 +21,14 @@ function App() {
   return (
     <>
       {showModal && <Card content={selectedContent} onClose={closeCard} imageThumbnails={data} />} 
+  
       <div style={styles.main}>
-        <Header title="Photo Gallery" subtitle="A Photo Gallery App" />
-        <div style={styles.container}>
+        <Header title="Photo Gallery" subtitle="A Photo Gallery App " />
+        <div className="container" style={styles.container}>
           {data.map((image_data, index) => {
             return (
               <div
+                className="imageContainer"
                 style={styles.imageContainer}
                 onClick={() => {
                   openCard(image_data);
@@ -52,15 +56,16 @@ const styles = {
     width: '100%',
     height: '100%',
     backgroundColor: '#f0f0f0',
+    margin: 'auto',
     flexDirection: 'column',
   },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center', // Center horizontally
-    gap: '60px 80px', // Adjust the gap between images both vertically and horizontally
-    maxWidth: '100%', // Ensure the images don't exceed the container width
-    padding: '50px', // Add some padding around the container
+    justifyContent: 'center', 
+    gap: '60px 80px', 
+    maxWidth: '100%', 
+    padding: '50px', 
   },
   imageContainer: {
     display: 'flex',
@@ -69,14 +74,14 @@ const styles = {
     alignItems: 'center',
     alignContent: 'center',
     cursor: 'pointer',
-    width: '300px', // Fixed width for each image container
-    height: '300px', // Fixed height for each image container
+    width: '300px', 
+    height: '300px', 
   },
   image: {
     width: '100%',
-    height: '100%', // Maintain aspect ratio
-    objectFit: 'cover', // Crop or expand to fill the container
-    objectPosition: 'top center', // Allow cropping from the top if necessary
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'top center', 
   },
   imageDescription: {
     display: 'flex',
@@ -87,10 +92,24 @@ const styles = {
     height: '50px',
     backgroundColor: '#000000',
   },
+  imageContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    cursor: "pointer",
+  },
+  image: {
+    width: "300px",
+    height: "300px",
+    objectFit: "cover",
+  },
+  },
   imageDescriptionText: {
-    color: '#ffffff',
-    fontSize: '16px',
-    fontWeight: 'bold',
+    color: "#ffffff",
+    fontSize: "16px",
+    fontWeight: "bold",
   },
 };
 

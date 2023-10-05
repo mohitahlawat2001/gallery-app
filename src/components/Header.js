@@ -17,7 +17,8 @@ const styles = {
     alignItems: 'center',
     alignContent: 'center',
     width: '100%',
-    backgroundColor: 'lightblue',
+    background: '-webkit-linear-gradient(to right, #007991, #78ffd6)',
+    background: 'linear-gradient(to right, #007991, #78ffd6)',
     marginBottom:"20px"
   },
   title: {
@@ -32,7 +33,8 @@ const styles = {
     fontWeight: 'bold',
     color: '#ffffff',
     textShadow: '2px 2px 2px #000000',
-    textAlign:"left"
+    textAlign:"left",
+    marginTop: '-1.4rem'
   },
 }
 
