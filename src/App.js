@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { data } from './content/data';
 import Header from './components/Header';
 import Card from './components/Card';
-import Modal from "./modal/Modal";
 import "./App.css";
 
 function App() {
@@ -104,12 +103,6 @@ const styles = {
     width: "300px",
     height: "300px",
     objectFit: "cover",
-  },
-  },
-  imageDescriptionText: {
-    color: "#ffffff",
-    fontSize: "16px",
-    fontWeight: "bold",
   },
 };
 
