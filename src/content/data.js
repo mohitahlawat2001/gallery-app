@@ -8,7 +8,7 @@ export const data = [
       "size": "1000 KB",
       "width": 1000,
       "height": 1000
-
+ 
       
     },
     {

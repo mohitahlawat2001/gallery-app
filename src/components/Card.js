@@ -11,10 +11,10 @@ const Card = ({ content, onClose, imageThumbnails }) => {
 
   return (
     <div style={styles.background} onClick={handleBackgroundClick} className="modal-background">
-      <div style={styles.card}>
-        <div style={styles.cardHeader}>
-          <h1 style={styles.cardTitle}>{name}</h1>
-          <button style={styles.cardCloseButton} onClick={onClose}>
+      <div className='card' style={styles.card}>
+        <div  className='cardHeader' style={styles.cardHeader}>
+          <h1 className='cardTitle' style={styles.cardTitle}>{name}</h1>
+          <button className='cardCloseButton' style={styles.cardCloseButton} onClick={onClose}>
             Close
           </button>
         </div>
@@ -44,7 +44,7 @@ const Card = ({ content, onClose, imageThumbnails }) => {
             </div>
           </div>
         </div>
-        <div style={styles.thumbnailRow}>
+        <div className='thumbnailRow' style={styles.thumbnailRow}>
           {imageThumbnails.map((thumbnail, index) => (
             <img
               style={styles.thumbnail}
@@ -72,6 +72,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center', // Center vertically
     overflow: 'auto',
+    zIndex:1000,
   },
   card: {
     width: '40%',
@@ -88,6 +89,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    fontSize:'14px',
     marginBottom: '20px',
   },
   cardTitle: {
@@ -139,6 +141,7 @@ const styles = {
     justifyContent: 'center', // Center thumbnails horizontally
     alignItems: 'center',
     marginTop: '20px',
+    
   },
   thumbnail: {
     width: '50px',
@@ -147,6 +150,7 @@ const styles = {
     cursor: 'pointer',
     marginRight: '10px',
     borderRadius: '5px',
+    
   },
 };
 
