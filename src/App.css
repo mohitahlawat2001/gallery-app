@@ -4,20 +4,46 @@
   flex-wrap: wrap;
   gap: 20px;
   max-width: 50vw;
+  padding: 50px;
+}
+
+.thumbnailRow{
+  overflow-y: hidden !important;
+  overflow-x: scroll !important;
 }
 
 .imageContainer {
   margin: auto;
 }
 
-@media screen and (max-width: 646px) {
+@media screen and (max-width: 768px) {
   .container {
     width: 100%;
+    padding: 0;
   }
 
   .imageContainer {
     position: relative;
     width: 100%;
+    margin: auto;
+    padding: 0px;
+  }
+  .cardHeader{
+    font-size: 14px !important;
+    height: 40px;
+    margin-bottom: 0;
+  }
+  .card{
+    width: 85% !important;
+    height: 80% !important;
+    font-size: small !important;
+
+  }
+  .cardTitle{
+    font-size: 1.4rem !important;
+  }
+  .cardCloseButton{
+    font-size: 1.4rem !important;
   }
 
-}
+} 

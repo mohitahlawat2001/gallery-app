@@ -66,7 +66,7 @@ const styles = {
     justifyContent: 'center', 
     gap: '60px 80px', 
     maxWidth: '100%', 
-    padding: '50px', 
+    
   },
   imageContainer: {
     display: 'flex',
