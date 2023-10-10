@@ -1,38 +1,61 @@
-import { useState } from 'react';
-import { data } from './content/data';
-import Modal from './modal/Modal';
-import Header from './components/Header'
+import React, { useState } from "react";
+import { data } from "./content/data";
+import Card from "./components/Card";
+import "./App.css";
+import Button from "./components/Button";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
 
+  const openCard = (content) => {
+    setSelectedContent(content);
+    setShowModal(true);
+  };
+
+  const closeCard = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
       {showModal && (
-        <Modal setShowModal={setShowModal} setSelectedContent={setSelectedContent} content={selectedContent} data={data} />
+        <Card
+          content={selectedContent}
+          onClose={closeCard}
+          imageThumbnails={data}
+        />
       )}
+
       <div style={styles.main}>
-        <Header title="Photo Gallery" subtitle="A Photo Gallery App " />
-        <div style={styles.container}>
+        <div className="container" style={styles.container}>
           {data.map((image_data, index) => {
             return (
               <div
-                style={styles.card}
+                className="imageContainer"
+                style={styles.imageContainer}
                 onClick={() => {
-                  setShowModal(true);
-                  setSelectedContent(image_data);
+                  openCard(image_data);
                 }}
                 key={index}
               >
-                <img style={styles.image} src={image_data.url} alt={image_data.name} />
+                <div style={styles.imageWrapper}>
+                  <img
+                    style={styles.image}
+                    src={image_data.url}
+                    alt={image_data.name}
+                  />
+                </div>
                 <div style={styles.imageDescription}>
-                  <p style={styles.imageDescriptionText}>{image_data.name}</p>
+                  <p style={styles.imageDescriptionText}>
+                    {image_data.name}
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
+        <Button />
       </div>
     </>
   );
@@ -40,44 +63,64 @@ function App() {
 
 const styles = {
   main: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#f0f0f0',
-    flexDirection: 'column',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#f0f0f0",
+    margin: "auto",
+    flexDirection: "column",
   },
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '10px',
-    maxWidth: '80vw',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "20px",
+    maxWidth: "100%",
+    padding: "20px",
   },
-  card: {
-    width: 'calc(25% - 10px)', // Equal-sized cards with 10px gap
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    overflow: 'hidden',
-    cursor: 'pointer',
+  imageContainer: {
+    width: "calc(25% - 20px)",
+    borderRadius: "5px",
+    overflow: "hidden",
+    position: "relative",
+    transition: "transform 0.3s",
+    cursor: "pointer",
+  },
+  imageContainerHovered: {
+    transform: "scale(1.05)",
+  },
+  imageWrapper: {
+    width: "100%",
+    paddingTop: "100%",
+    position: "relative",
   },
   image: {
-    width: '100%',
-    height: 'auto',
-    objectFit: 'cover',
-    maxHeight: '200px', // Adjust the max height for images
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "top center",
+    position: "absolute",
+    top: 0,
+    left: 0,
   },
   imageDescription: {
-    backgroundColor: '#000000',
-    opacity: '0.7',
-    padding: '8px',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "50px",
+    backgroundColor: "#000000",
+    color: "#d1d1d1",
+    borderRadius: "0 0 5px 5px",
   },
   imageDescriptionText: {
-    color: '#ffffff',
-    fontSize: '16px',
-    fontWeight: 'bold',
+    fontSize: "16px",
+    fontWeight: "bold",
     margin: 0,
   },
 };
 
 export default App;
+
