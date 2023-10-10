@@ -5,8 +5,8 @@ import "./App.css";
 import Button from "./components/Button";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedContent, setSelectedContent] = useState(null);
+	const [showModal, setShowModal] = useState(false);
+	const [selectedContent, setSelectedContent] = useState(null);
 
   const openCard = (content) => {
     setSelectedContent(content);
@@ -123,4 +123,3 @@ const styles = {
 };
 
 export default App;
-
