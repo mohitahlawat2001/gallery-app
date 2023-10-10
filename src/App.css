@@ -1,49 +1,67 @@
 .container {
-  width: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 50vw;
-  padding: 50px;
+	width: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	max-width: 50vw;
+	padding: 50px;
 }
 
-.thumbnailRow{
-  overflow-y: hidden !important;
-  overflow-x: scroll !important;
+.thumbnailRow {
+	overflow-y: hidden !important;
+	overflow-x: scroll !important;
 }
 
 .imageContainer {
-  margin: auto;
+	margin: auto;
+}
+
+.btn {
+	padding: 8px;
+	box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+	transition: all 150ms ease-in-out;
+	text-align: center;
+	width: 50%;
+	margin: 0% auto;
+	padding: 8px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.btn:hover {
+	color: #000;
+	box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-  .container {
-    width: 100%;
-    padding: 0;
-  }
+	.container {
+		width: 100%;
+		padding: 0;
+	}
 
-  .imageContainer {
-    position: relative;
-    width: 100%;
-    margin: auto;
-    padding: 0px;
-  }
-  .cardHeader{
-    font-size: 14px !important;
-    height: 40px;
-    margin-bottom: 0;
-  }
-  .card{
-    width: 85% !important;
-    height: 80% !important;
-    font-size: small !important;
-
-  }
-  .cardTitle{
-    font-size: 1.4rem !important;
-  }
-  .cardCloseButton{
-    font-size: 1.4rem !important;
-  }
-
-} 
+	.imageContainer {
+		position: relative;
+		width: 100%;
+		margin: auto;
+		padding: 0px;
+	}
+	.cardHeader {
+		font-size: 14px !important;
+		height: 40px;
+		margin-bottom: 0;
+	}
+	.card {
+		width: 85% !important;
+		height: 80% !important;
+		font-size: small !important;
+	}
+	.cardTitle {
+		font-size: 1.4rem !important;
+	}
+	.cardCloseButton {
+		font-size: 1.4rem !important;
+	}
+}
