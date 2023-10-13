@@ -1,5 +1,4 @@
-const url =
-	"https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc";
+import axios from "axios";
 
 //Since the number of API calls is limited, utilizing several api keys
 const api_keys = [
@@ -7,24 +6,28 @@ const api_keys = [
 	"dbe6f2da59mshf84541ed7338ffep16dbb5jsna915521aaa69",
 	"6b475d317fmsh5f17a527b6e7de8p1bff4fjsne8749ac8b491",
 ];
-const options = {
-	method: "GET",
-	headers: {
-		"X-RapidAPI-Key": api_keys[Math.floor(Math.random() * api_keys.length)],
-		"X-RapidAPI-Host": "anime-db.p.rapidapi.com",
-	},
-};
 
-const fetchData = async (setImages, setIsLoading) => {
+const fetchData = async (setApiData, setImages, page = 1) => {
+	const options = {
+		method: "GET",
+		url: "https://anime-db.p.rapidapi.com/anime",
+		params: {
+			page: page,
+			size: "10",
+			genres: "Fantasy,Drama",
+		},
+		headers: {
+			"X-RapidAPI-Key":
+				api_keys[Math.floor(Math.random() * api_keys.length)],
+			"X-RapidAPI-Host": "anime-db.p.rapidapi.com",
+		},
+	};
 	try {
-		setIsLoading(true);
-		const response = await fetch(url, options);
-		const result = await response.json();
-		setImages(result);
+		const response = await axios.request(options);
+		setApiData(response?.data);
+		setImages((images) => images.concat(response?.data?.data));
 	} catch (error) {
 		console.error(error);
-	} finally {
-		setIsLoading(false);
 	}
 };
 
